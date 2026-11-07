@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
-import { BUY_NOW_LINK } from '../config/links';
+import { BUY_NOW_LINK, scrollToSection } from '../config/links';
 
 export default function StickyMobileCTA() {
   const [visible, setVisible] = useState(false);
@@ -37,13 +37,20 @@ export default function StickyMobileCTA() {
                 &#8358;22,500
               </p>
             </div>
-            <a
-              href={BUY_NOW_LINK}
-              className="flex-1 flex items-center justify-center gap-1.5 bg-green-brand active:bg-green-hover text-black-deep font-bold text-sm py-3 px-4 rounded-xl transition-all duration-200 active:scale-[0.98] shadow-md shadow-green-brand/20 cursor-pointer"
+            <button
+              type="button"
+              onClick={() => {
+                if (BUY_NOW_LINK && BUY_NOW_LINK.startsWith('http')) {
+                  window.location.href = BUY_NOW_LINK;
+                } else {
+                  scrollToSection('order');
+                }
+              }}
+              className="flex-1 flex items-center justify-center gap-1.5 bg-green-brand active:bg-green-hover text-black-deep font-black text-xs uppercase tracking-wider py-3 px-3 rounded-xl transition-all duration-200 active:scale-[0.98] shadow-md shadow-green-brand/20 cursor-pointer"
             >
-              Order Now — Pay on Delivery
-              <ChevronRight size={16} strokeWidth={2.5} />
-            </a>
+              <span>Pay on Delivery (₦22,500)</span>
+              <ChevronRight size={15} strokeWidth={2.5} />
+            </button>
           </div>
         </motion.div>
       )}

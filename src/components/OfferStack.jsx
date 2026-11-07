@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
 import { Gift, Truck, ShieldCheck, BookOpen, Cable, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
-import { BUY_NOW_LINK } from '../config/links';
+import { BUY_NOW_LINK, scrollToSection } from '../config/links';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -143,13 +143,20 @@ export default function OfferStack() {
           variants={fadeUp}
           className="text-center"
         >
-          <a
-            href={BUY_NOW_LINK}
-            className="group inline-flex items-center justify-center gap-2.5 bg-green-brand hover:bg-green-hover text-black-deep font-bold text-base sm:text-lg px-8 py-4 rounded-xl transition-all duration-200 active:scale-[0.97] animate-glow shadow-xl shadow-green-brand/20 cursor-pointer w-full sm:w-auto"
+          <button
+            type="button"
+            onClick={() => {
+              if (BUY_NOW_LINK && BUY_NOW_LINK.startsWith('http')) {
+                window.location.href = BUY_NOW_LINK;
+              } else {
+                scrollToSection('order');
+              }
+            }}
+            className="group inline-flex items-center justify-center gap-2.5 bg-green-brand hover:bg-green-hover text-black-deep font-extrabold text-xs sm:text-sm uppercase tracking-wider px-8 py-4 rounded-xl transition-all duration-200 active:scale-[0.97] animate-glow shadow-xl shadow-green-brand/20 cursor-pointer w-full sm:w-auto"
           >
             <span>Claim {selected === 1 ? '1 Belt (₦22,500)' : '2 Belts (₦40,000)'} — Pay on Delivery</span>
-            <ChevronRight size={20} strokeWidth={2.5} className="transition-transform group-hover:translate-x-1" />
-          </a>
+            <ChevronRight size={18} strokeWidth={2.5} className="transition-transform group-hover:translate-x-1" />
+          </button>
           <p className="text-xs text-slate-text font-normal mt-3">
             Free insured delivery across all 36 states + FCT Abuja
           </p>

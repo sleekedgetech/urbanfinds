@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
 import { ChevronRight, ShieldCheck, Heart } from 'lucide-react';
-import { BUY_NOW_LINK } from '../config/links';
+import { BUY_NOW_LINK, scrollToSection } from '../config/links';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -38,13 +38,20 @@ export default function FinalCTA() {
             Instant thermal relief in 3 seconds. 100% drug-free. Reusable for years.
           </p>
 
-          <a
-            href={BUY_NOW_LINK}
-            className="group inline-flex items-center gap-2.5 bg-green-brand hover:bg-green-hover text-black-deep font-bold text-base sm:text-lg px-9 py-4.5 rounded-xl transition-all duration-200 active:scale-[0.97] animate-glow shadow-xl shadow-green-brand/20 cursor-pointer"
+          <button
+            type="button"
+            onClick={() => {
+              if (BUY_NOW_LINK && BUY_NOW_LINK.startsWith('http')) {
+                window.location.href = BUY_NOW_LINK;
+              } else {
+                scrollToSection('order');
+              }
+            }}
+            className="group inline-flex items-center gap-2.5 bg-green-brand hover:bg-green-hover text-black-deep font-extrabold text-xs sm:text-sm uppercase tracking-wider px-9 py-4.5 rounded-xl transition-all duration-200 active:scale-[0.97] animate-glow shadow-xl shadow-green-brand/20 cursor-pointer"
           >
             <span>Claim Yours Now — Pay &#8358;22,500 On Delivery</span>
-            <ChevronRight size={20} strokeWidth={2.5} className="transition-transform group-hover:translate-x-1" />
-          </a>
+            <ChevronRight size={18} strokeWidth={2.5} className="transition-transform group-hover:translate-x-1" />
+          </button>
 
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-8 text-xs sm:text-sm text-slate-text font-medium">
             <span className="flex items-center gap-1.5">

@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
 import { useCountUp } from '../hooks/useCountUp';
 import { X, Check, Repeat, Zap, ArrowRight } from 'lucide-react';
-import { BUY_NOW_LINK } from '../config/links';
+import { BUY_NOW_LINK, scrollToSection } from '../config/links';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -143,13 +143,20 @@ export default function PriceComparison() {
             Don't manage it.{' '}
             <span className="text-green-brand">Fix it.</span>
           </p>
-          <a
-            href={BUY_NOW_LINK}
-            className="group inline-flex items-center gap-2.5 bg-green-brand hover:bg-green-hover text-black-deep font-bold text-base px-8 py-4 rounded-xl transition-all duration-200 active:scale-[0.97] animate-glow shadow-xl shadow-green-brand/20 cursor-pointer"
+          <button
+            type="button"
+            onClick={() => {
+              if (BUY_NOW_LINK && BUY_NOW_LINK.startsWith('http')) {
+                window.location.href = BUY_NOW_LINK;
+              } else {
+                scrollToSection('order');
+              }
+            }}
+            className="group inline-flex items-center gap-2.5 bg-green-brand hover:bg-green-hover text-black-deep font-extrabold text-xs sm:text-sm uppercase tracking-wider px-8 py-4 rounded-xl transition-all duration-200 active:scale-[0.97] animate-glow shadow-xl shadow-green-brand/20 cursor-pointer"
           >
             <span>Order Yours Now — Pay on Delivery</span>
             <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
-          </a>
+          </button>
         </motion.div>
 
       </div>

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
 import { ChevronRight } from 'lucide-react';
-import { BUY_NOW_LINK } from '../config/links';
+import { BUY_NOW_LINK, scrollToSection } from '../config/links';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -14,6 +14,14 @@ const stagger = {
 
 export default function WhySection() {
   const [ref, inView] = useInView();
+
+  const handleOrder = () => {
+    if (BUY_NOW_LINK && BUY_NOW_LINK.startsWith('http')) {
+      window.location.href = BUY_NOW_LINK;
+    } else {
+      scrollToSection('order');
+    }
+  };
 
   return (
     <section ref={ref} className="relative py-20 sm:py-28 bg-navy/30">
@@ -69,13 +77,14 @@ export default function WhySection() {
             </p>
 
             <div className="pt-6">
-              <a
-                href={BUY_NOW_LINK}
-                className="group inline-flex items-center justify-center gap-2.5 bg-green-brand hover:bg-green-hover text-black-deep font-bold text-base px-8 py-4 rounded-xl transition-all duration-200 active:scale-[0.97] animate-glow shadow-lg shadow-green-brand/20 cursor-pointer"
+              <button
+                type="button"
+                onClick={handleOrder}
+                className="group inline-flex items-center justify-center gap-2.5 bg-green-brand hover:bg-green-hover text-black-deep font-extrabold text-xs sm:text-sm uppercase tracking-wider px-8 py-4 rounded-xl transition-all duration-200 active:scale-[0.97] animate-glow shadow-lg shadow-green-brand/20 cursor-pointer"
               >
                 <span>Experience Instant Relief — Pay on Delivery</span>
                 <ChevronRight size={18} strokeWidth={2.5} className="transition-transform group-hover:translate-x-1" />
-              </a>
+              </button>
             </div>
           </motion.div>
         </motion.div>

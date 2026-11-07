@@ -1,6 +1,6 @@
-import TickerBar from './components/TickerBar';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import TickerBar from './components/TickerBar';
 import WhySection from './components/WhySection';
 import ProductShowcase from './components/ProductShowcase';
 import HowItWorks from './components/HowItWorks';
@@ -15,10 +15,17 @@ import StickyMobileCTA from './components/StickyMobileCTA';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-black-deep text-white-off">
-      <TickerBar />
+    <div className="min-h-screen bg-black-deep text-white-off overflow-x-hidden">
+      {/* 1. Sticky Header with Wordmark Logo & Blur */}
       <Navbar />
+
+      {/* 2. Hero Section (Header Section) */}
       <Hero />
+
+      {/* 3. Sliding Stripe (Comes after the Hero Header Section) */}
+      <TickerBar />
+
+      {/* 4. Body Sections */}
       <WhySection />
       <ProductShowcase />
       <HowItWorks />
@@ -29,6 +36,8 @@ export default function App() {
       <FAQ />
       <FinalCTA />
       <Footer />
+
+      {/* 5. Mobile Floating Action Bar */}
       <StickyMobileCTA />
     </div>
   );
