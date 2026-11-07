@@ -136,11 +136,11 @@ export default function Hero() {
             animate="visible"
             className="lg:col-span-5 order-2 flex flex-col items-center"
           >
-            {/* Smooth gentle gravitation/floating motion + increased mobile width */}
+            {/* Smooth gentle gravitation/floating motion + spacious, uncompacted width */}
             <motion.div
-              animate={{ y: [-5, 5, -5] }}
+              animate={{ y: [-6, 6, -6] }}
               transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
-              className="relative w-full max-w-[340px] sm:max-w-sm lg:max-w-md mx-auto"
+              className="relative w-full max-w-[360px] sm:max-w-md lg:max-w-[450px] mx-auto"
             >
               {/* Soft Backlight */}
               <div className="absolute inset-0 bg-green-brand/10 rounded-3xl blur-[60px] scale-95" />

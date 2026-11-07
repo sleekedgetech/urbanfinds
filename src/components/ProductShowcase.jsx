@@ -76,8 +76,8 @@ export default function ProductShowcase() {
           {/* Left Column: Visual Belt + Simulated LED Console */}
           <div className="lg:col-span-6 flex flex-col items-center">
             
-            {/* Belt Image Frame */}
-            <div className="relative w-full max-w-sm aspect-square rounded-2xl overflow-hidden bg-navy/40 border border-navy-lighter/30 flex items-center justify-center p-4">
+            {/* Belt Image Frame (Generous, uncompacted display) */}
+            <div className="relative w-full max-w-md aspect-square rounded-2xl overflow-hidden bg-navy/40 border border-navy-lighter/30 flex items-center justify-center p-4 sm:p-6">
               <img
                 src="/assets/electric_heating_belt.jpg"
                 alt="Urban Finds Heating Belt"

@@ -39,10 +39,10 @@ export default function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${
+      className={`sticky top-0 z-50 transition-all duration-300 backdrop-blur-xl bg-black-deep/70 border-b ${
         scrolled
-          ? 'bg-black-deep/80 backdrop-blur-xl border-b border-navy-lighter/25 py-3.5 shadow-2xl shadow-black/60'
-          : 'bg-black-deep/60 backdrop-blur-md border-b border-navy-lighter/15 py-4 sm:py-5'
+          ? 'border-navy-lighter/30 py-3.5 shadow-2xl shadow-black/80 bg-black-deep/85'
+          : 'border-navy-lighter/15 py-4 sm:py-5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between">

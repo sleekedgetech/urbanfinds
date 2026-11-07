@@ -15,8 +15,8 @@ import StickyMobileCTA from './components/StickyMobileCTA';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-black-deep text-white-off overflow-x-hidden">
-      {/* 1. Sticky Header with Wordmark Logo & Blur */}
+    <div className="min-h-screen bg-black-deep text-white-off relative">
+      {/* 1. Sticky Glassmorphic Header with Wordmark Logo & Blur */}
       <Navbar />
 
       {/* 2. Hero Section (Header Section) */}
