@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
 import { ChevronRight } from 'lucide-react';
-import { BUY_NOW_LINK, scrollToSection } from '../config/links';
+import { BUY_NOW_LINK, scrollToSection, PRICE_PROMO } from '../config/links';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -80,9 +80,9 @@ export default function WhySection() {
               <button
                 type="button"
                 onClick={handleOrder}
-                className="group inline-flex items-center justify-center gap-2.5 bg-green-brand hover:bg-green-hover text-black-deep font-extrabold text-xs sm:text-sm uppercase tracking-wider px-8 py-4 rounded-xl transition-all duration-200 active:scale-[0.97] animate-glow shadow-lg shadow-green-brand/20 cursor-pointer"
+                className="group inline-flex items-center justify-center gap-2.5 bg-green-brand hover:bg-green-hover text-black-deep font-black text-xs sm:text-sm uppercase tracking-wider px-8 py-4 rounded-xl transition-all duration-200 active:scale-[0.97] animate-glow shadow-lg shadow-green-brand/20 cursor-pointer"
               >
-                <span>Experience Instant Relief — Pay on Delivery</span>
+                <span>Experience Instant Relief — Pay &#8358;{PRICE_PROMO}</span>
                 <ChevronRight size={18} strokeWidth={2.5} className="transition-transform group-hover:translate-x-1" />
               </button>
             </div>

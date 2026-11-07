@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronRight, ShieldCheck } from 'lucide-react';
-import { BUY_NOW_LINK, scrollToSection } from '../config/links';
+import { Menu, X, ChevronRight, Sparkles } from 'lucide-react';
+import { BUY_NOW_LINK, scrollToSection, PRICE_PROMO, PROMO_EXPIRY_DATE } from '../config/links';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -16,11 +16,12 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { label: 'Why It Works', targetId: 'how-it-works' },
+    { label: 'Video Demo', targetId: 'video-demo' },
     { label: 'Smart Controls', targetId: 'interactive-demo' },
-    { label: 'Cost Comparison', targetId: 'pricing' },
-    { label: 'Customer Reviews', targetId: 'reviews' },
-    { label: 'Questions & Answers', targetId: 'faq' },
+    { label: 'Why It Works', targetId: 'how-it-works' },
+    { label: 'Comparison', targetId: 'pricing' },
+    { label: 'Reviews', targetId: 'reviews' },
+    { label: 'FAQ', targetId: 'faq' },
   ];
 
   const handleNavClick = (targetId) => {
@@ -30,8 +31,8 @@ export default function Navbar() {
 
   const handleOrderClick = () => {
     setMobileMenuOpen(false);
-    if (BUY_NOW_LINK.startsWith('http')) {
-      window.location.href = BUY_NOW_LINK;
+    if (BUY_NOW_LINK && BUY_NOW_LINK.startsWith('http')) {
+      window.open(BUY_NOW_LINK, '_blank');
     } else {
       scrollToSection('order');
     }
@@ -39,9 +40,9 @@ export default function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 backdrop-blur-xl bg-black-deep/70 border-b ${
+      className={`sticky top-0 z-50 transition-all duration-300 backdrop-blur-xl bg-black-deep/75 border-b ${
         scrolled
-          ? 'border-navy-lighter/30 py-3.5 shadow-2xl shadow-black/80 bg-black-deep/85'
+          ? 'border-navy-lighter/30 py-3.5 shadow-2xl shadow-black/80 bg-black-deep/90'
           : 'border-navy-lighter/15 py-4 sm:py-5'
       }`}
     >
@@ -60,7 +61,7 @@ export default function Navbar() {
         </button>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-8 text-xs font-bold uppercase tracking-wider text-slate-text">
+        <nav className="hidden lg:flex items-center gap-7 text-xs font-bold uppercase tracking-wider text-slate-text">
           {navLinks.map((link) => (
             <button
               key={link.label}
@@ -75,17 +76,17 @@ export default function Navbar() {
 
         {/* Right Desktop CTA */}
         <div className="hidden sm:flex items-center gap-4">
-          <div className="hidden xl:flex items-center gap-1.5 text-xs text-slate-text font-semibold">
-            <ShieldCheck size={14} className="text-green-brand" />
-            <span>Pay on Delivery</span>
+          <div className="hidden xl:flex items-center gap-1.5 text-xs text-green-brand font-bold uppercase tracking-wider">
+            <Sparkles size={14} className="text-green-brand" />
+            <span>30% Off Till {PROMO_EXPIRY_DATE}</span>
           </div>
 
           <button
             type="button"
             onClick={handleOrderClick}
-            className="inline-flex items-center gap-2 bg-green-brand hover:bg-green-hover text-black-deep font-extrabold text-xs uppercase tracking-wider px-5 py-2.5 rounded-xl transition-all duration-200 active:scale-95 shadow-md shadow-green-brand/20 cursor-pointer"
+            className="inline-flex items-center gap-2 bg-green-brand hover:bg-green-hover text-black-deep font-black text-xs uppercase tracking-wider px-5 py-2.5 rounded-xl transition-all duration-200 active:scale-95 shadow-md shadow-green-brand/20 cursor-pointer"
           >
-            <span>Order (₦22,500)</span>
+            <span>Claim Offer (&#8358;{PRICE_PROMO})</span>
             <ChevronRight size={15} strokeWidth={2.5} />
           </button>
         </div>
@@ -129,9 +130,9 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={handleOrderClick}
-                className="w-full flex items-center justify-center gap-2 bg-green-brand hover:bg-green-hover text-black-deep font-extrabold text-sm py-3.5 px-4 rounded-xl transition-all duration-200 active:scale-95 cursor-pointer shadow-lg shadow-green-brand/20 uppercase tracking-wider"
+                className="w-full flex items-center justify-center gap-2 bg-green-brand hover:bg-green-hover text-black-deep font-black text-sm py-3.5 px-4 rounded-xl transition-all duration-200 active:scale-95 cursor-pointer shadow-lg shadow-green-brand/20 uppercase tracking-wider"
               >
-                <span>Order Now — Pay on Delivery</span>
+                <span>Pay &#8358;{PRICE_PROMO} & Claim 30% Off</span>
                 <ChevronRight size={16} strokeWidth={2.5} />
               </button>
             </div>

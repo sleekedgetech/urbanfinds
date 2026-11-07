@@ -1,14 +1,13 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
-import { BUY_NOW_LINK, scrollToSection } from '../config/links';
+import { BUY_NOW_LINK, scrollToSection, PRICE_PROMO, PROMO_EXPIRY_DATE } from '../config/links';
 
 export default function StickyMobileCTA() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show when scrolled past 400px, hide when near order form
       const orderEl = document.getElementById('order');
       const orderTop = orderEl ? orderEl.getBoundingClientRect().top : Infinity;
       const scrollY = window.scrollY;
@@ -19,6 +18,14 @@ export default function StickyMobileCTA() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleOrder = () => {
+    if (BUY_NOW_LINK && BUY_NOW_LINK.startsWith('http')) {
+      window.open(BUY_NOW_LINK, '_blank');
+    } else {
+      scrollToSection('order');
+    }
+  };
 
   return (
     <AnimatePresence>
@@ -32,23 +39,17 @@ export default function StickyMobileCTA() {
         >
           <div className="flex items-center justify-between gap-3 max-w-md mx-auto">
             <div>
-              <p className="text-xs text-slate-text">One-time offer</p>
-              <p className="font-heading font-bold text-lg text-green-brand leading-none">
-                &#8358;22,500
+              <p className="text-[10px] text-green-brand font-bold uppercase tracking-wider">30% Off Till Dec 30</p>
+              <p className="font-heading font-black text-lg text-green-brand leading-none">
+                &#8358;{PRICE_PROMO}
               </p>
             </div>
             <button
               type="button"
-              onClick={() => {
-                if (BUY_NOW_LINK && BUY_NOW_LINK.startsWith('http')) {
-                  window.location.href = BUY_NOW_LINK;
-                } else {
-                  scrollToSection('order');
-                }
-              }}
+              onClick={handleOrder}
               className="flex-1 flex items-center justify-center gap-1.5 bg-green-brand active:bg-green-hover text-black-deep font-black text-xs uppercase tracking-wider py-3 px-3 rounded-xl transition-all duration-200 active:scale-[0.98] shadow-md shadow-green-brand/20 cursor-pointer"
             >
-              <span>Pay on Delivery (₦22,500)</span>
+              <span>Claim 30% Off</span>
               <ChevronRight size={15} strokeWidth={2.5} />
             </button>
           </div>

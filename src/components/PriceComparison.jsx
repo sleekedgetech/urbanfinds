@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
 import { useCountUp } from '../hooks/useCountUp';
 import { X, Check, Repeat, Zap, ArrowRight } from 'lucide-react';
-import { BUY_NOW_LINK, scrollToSection } from '../config/links';
+import { BUY_NOW_LINK, scrollToSection, PRICE_PROMO, PRICE_ORIGINAL, PROMO_EXPIRY_DATE } from '../config/links';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -16,6 +16,14 @@ function PriceCounter({ value, inView }) {
 
 export default function PriceComparison() {
   const [ref, inView] = useInView();
+
+  const handleOrder = () => {
+    if (BUY_NOW_LINK && BUY_NOW_LINK.startsWith('http')) {
+      window.open(BUY_NOW_LINK, '_blank');
+    } else {
+      scrollToSection('order');
+    }
+  };
 
   return (
     <section ref={ref} id="pricing" className="relative py-20 sm:py-28 scroll-mt-6">
@@ -36,9 +44,9 @@ export default function PriceComparison() {
             <span className="w-6 h-px bg-green-brand" />
           </div>
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight text-white-off">
-            You've already been spending{' '}
+            You've already been spending over{' '}
             <span className="text-green-brand font-black">
-              &#8358;<PriceCounter value={22500} inView={inView} />
+              &#8358;<PriceCounter value={28275} inView={inView} />
             </span>{' '}
             every single year.
           </h2>
@@ -64,24 +72,24 @@ export default function PriceComparison() {
                 </h3>
               </div>
               <span className="text-[11px] font-bold text-red-400 uppercase tracking-wider border-l-2 border-red-500 pl-2">
-                Recurring Cost
+                Recurring Drain
               </span>
             </div>
 
             <div className="mb-6">
               <span className="text-xs uppercase tracking-wider text-slate-text font-semibold block mb-1">Estimated Annual Loss</span>
               <p className="font-heading text-4xl sm:text-5xl font-extrabold text-red-400">
-                &#8358;<PriceCounter value={22500} inView={inView} />
+                &#8358;<PriceCounter value={28275} inView={inView} />
                 <span className="text-sm text-slate-text font-normal"> / year</span>
               </p>
             </div>
 
             <ul className="space-y-3.5 text-slate-text text-sm font-normal">
               {[
-                'Recurring monthly drain: pads, heat patches & painkillers',
+                'Recurring monthly drain: disposable pads, temporary heat patches & pills',
                 'Chemical painkillers cause liver strain and gastric ulcers over time',
                 'Hot water bottles leak, cool down in 20 min, and restrict your movement',
-                'Still leaves you curled up in bed, sacrificing active work hours',
+                'Still leaves you curled up in bed, sacrificing active work hours and meetings',
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-2.5">
                   <X size={16} className="text-red-400 mt-0.5 shrink-0" />
@@ -104,24 +112,26 @@ export default function PriceComparison() {
                 </h3>
               </div>
               <span className="text-[11px] font-bold text-green-brand uppercase tracking-wider border-l-2 border-green-brand pl-2">
-                One-Time Fix
+                30% Off Till Dec 30
               </span>
             </div>
 
             <div className="mb-6">
-              <span className="text-xs uppercase tracking-wider text-slate-text font-semibold block mb-1">Lifetime Investment</span>
-              <p className="font-heading text-4xl sm:text-5xl font-extrabold text-green-brand">
-                &#8358;<PriceCounter value={22500} inView={inView} />
-                <span className="text-sm text-slate-text font-normal"> once</span>
-              </p>
+              <span className="text-xs uppercase tracking-wider text-slate-text font-semibold block mb-1">One-Time Promo Investment</span>
+              <div className="flex items-baseline gap-2">
+                <p className="font-heading text-4xl sm:text-5xl font-extrabold text-green-brand">
+                  &#8358;<PriceCounter value={21750} inView={inView} />
+                </p>
+                <span className="text-base text-slate-text font-normal line-through">&#8358;{PRICE_ORIGINAL}</span>
+              </div>
             </div>
 
             <ul className="space-y-3.5 text-slate-text text-sm font-normal">
               {[
                 'One-time purchase — reusable across dozens of menstrual cycles',
                 '100% drug-free far-infrared warmth with zero digestive side effects',
-                'Steady, continuous 50-60°C temperature + 4 pulsed massage modes',
-                'Ultra-discreet 3mm profile fits flat under dresses, suits, or casual clothes',
+                'Steady, continuous 50-60°C temperature + 4 pulsed vibrational massage modes',
+                'Includes VIP delivery group tracking within 5-10 minutes of ordering',
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-2.5">
                   <Check size={16} className="text-green-brand mt-0.5 shrink-0" />
@@ -145,18 +155,15 @@ export default function PriceComparison() {
           </p>
           <button
             type="button"
-            onClick={() => {
-              if (BUY_NOW_LINK && BUY_NOW_LINK.startsWith('http')) {
-                window.location.href = BUY_NOW_LINK;
-              } else {
-                scrollToSection('order');
-              }
-            }}
-            className="group inline-flex items-center gap-2.5 bg-green-brand hover:bg-green-hover text-black-deep font-extrabold text-xs sm:text-sm uppercase tracking-wider px-8 py-4 rounded-xl transition-all duration-200 active:scale-[0.97] animate-glow shadow-xl shadow-green-brand/20 cursor-pointer"
+            onClick={handleOrder}
+            className="group inline-flex items-center gap-2.5 bg-green-brand hover:bg-green-hover text-black-deep font-black text-xs sm:text-sm uppercase tracking-wider px-8 py-4 rounded-xl transition-all duration-200 active:scale-[0.97] animate-glow shadow-xl shadow-green-brand/20 cursor-pointer"
           >
-            <span>Order Yours Now — Pay on Delivery</span>
+            <span>Claim 30% Discount (&#8358;{PRICE_PROMO})</span>
             <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
           </button>
+          <p className="text-xs text-slate-text mt-3">
+            Offer strictly valid until {PROMO_EXPIRY_DATE}.
+          </p>
         </motion.div>
 
       </div>

@@ -6,9 +6,10 @@
   --color-navy: #0F172A;
   --color-navy-light: #1E293B;
   --color-navy-lighter: #334155;
-  --color-green-brand: #10B981;
-  --color-green-hover: #059669;
-  --color-green-glow: rgba(16, 185, 129, 0.35);
+  /* Oraimo Official Brand Green (#83E600) */
+  --color-green-brand: #83E600;
+  --color-green-hover: #72CC00;
+  --color-green-glow: rgba(131, 230, 0, 0.35);
   --color-slate-text: #94A3B8;
   --color-slate-light: #CBD5E1;
   --color-white-off: #F8FAFC;
@@ -43,12 +44,12 @@ body {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
-.animate-ticker { animation: ticker-scroll 30s linear infinite; }
+.animate-ticker { animation: ticker-scroll 32s linear infinite; }
 
 /* ── Glow pulse on CTA buttons ────────────────────── */
 @keyframes glow-pulse {
-  0%, 100% { box-shadow: 0 0 20px var(--color-green-glow), 0 0 50px rgba(16,185,129,0.12); }
-  50% { box-shadow: 0 0 28px var(--color-green-glow), 0 0 70px rgba(16,185,129,0.22); }
+  0%, 100% { box-shadow: 0 0 18px var(--color-green-glow), 0 0 45px rgba(131,230,0,0.15); }
+  50% { box-shadow: 0 0 28px var(--color-green-glow), 0 0 65px rgba(131,230,0,0.25); }
 }
 .animate-glow { animation: glow-pulse 2.5s ease-in-out infinite; }
 

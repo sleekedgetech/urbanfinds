@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
-import { Gift, Truck, ShieldCheck, BookOpen, Cable, ChevronRight } from 'lucide-react';
+import { Gift, Truck, ShieldCheck, BookOpen, Cable, ChevronRight, Users } from 'lucide-react';
 import { useState } from 'react';
-import { BUY_NOW_LINK, scrollToSection } from '../config/links';
+import { BUY_NOW_LINK, scrollToSection, PRICE_PROMO, PRICE_ORIGINAL, PRICE_BUNDLE_2, PROMO_EXPIRY_DATE } from '../config/links';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -10,21 +10,30 @@ const fadeUp = {
 };
 
 const stackItems = [
-  { icon: Gift, label: 'Urban Finds CycleRelief Pro Belt', value: '35,000' },
+  { icon: Gift, label: 'Urban Finds CycleRelief Pro Belt', value: PRICE_ORIGINAL },
   { icon: Cable, label: 'Rapid USB-C Fast-Charging Cable', value: '5,000' },
   { icon: BookOpen, label: 'Digital Guide: 48-Hr Anti-Inflammatory Protocol', value: '10,000' },
-  { icon: Truck, label: 'Free Nationwide Priority Insured Delivery', value: '4,500' },
+  { icon: Users, label: 'VIP Delivery & Real-Time Tracking Group Access', value: 'Priceless' },
+  { icon: Truck, label: 'Free Priority Insured Delivery', value: '4,500' },
   { icon: ShieldCheck, label: '30-Day "Zero Cramp" Money-Back Guarantee', value: 'Priceless' },
 ];
 
 const packs = [
-  { id: 1, label: '1 Belt (Single User)', price: '22,500', tag: null },
-  { id: 2, label: '2 Belts (Bestie / Sister Pack)', price: '40,000', tag: 'Save ₦5,000' },
+  { id: 1, label: '1 Belt (Solo Pack)', price: PRICE_PROMO, struck: PRICE_ORIGINAL, tag: '30% Discount' },
+  { id: 2, label: '2 Belts (Sister / Bestie Pack)', price: PRICE_BUNDLE_2, struck: '56,550', tag: 'Best Value' },
 ];
 
 export default function OfferStack() {
   const [ref, inView] = useInView();
   const [selected, setSelected] = useState(1);
+
+  const handleOrder = () => {
+    if (BUY_NOW_LINK && BUY_NOW_LINK.startsWith('http')) {
+      window.open(BUY_NOW_LINK, '_blank');
+    } else {
+      scrollToSection('order');
+    }
+  };
 
   return (
     <section ref={ref} className="relative py-20 sm:py-28 bg-navy/30">
@@ -88,9 +97,9 @@ export default function OfferStack() {
           <span className="text-xs uppercase tracking-widest text-slate-text font-bold block mb-1">
             Total Combined Market Value
           </span>
-          <p className="font-heading text-3xl font-extrabold text-slate-text line-through mb-1">&#8358;54,500</p>
+          <p className="font-heading text-3xl font-extrabold text-slate-text line-through mb-1">&#8358;47,775</p>
           <p className="text-green-brand font-heading text-sm font-bold uppercase tracking-wider">
-            Today's Promotional Discount Rate
+            Today's Promotional Price (Valid till {PROMO_EXPIRY_DATE})
           </p>
         </motion.div>
 
@@ -113,7 +122,7 @@ export default function OfferStack() {
               }`}
             >
               {pack.tag && (
-                <span className="absolute -top-3 right-4 bg-green-brand text-black-deep text-[11px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-md shadow-sm">
+                <span className="absolute -top-3 right-4 bg-green-brand text-black-deep text-[11px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-md shadow-sm">
                   {pack.tag}
                 </span>
               )}
@@ -129,9 +138,14 @@ export default function OfferStack() {
                 </div>
                 <span className="font-heading font-bold text-white-off text-sm">{pack.label}</span>
               </div>
-              <p className="font-heading text-2xl font-extrabold text-green-brand ml-7">
-                &#8358;{pack.price}
-              </p>
+              <div className="flex items-baseline gap-2 ml-7">
+                <p className="font-heading text-2xl font-black text-green-brand">
+                  &#8358;{pack.price}
+                </p>
+                <span className="text-xs text-slate-text line-through font-medium">
+                  &#8358;{pack.struck}
+                </span>
+              </div>
             </button>
           ))}
         </motion.div>
@@ -145,20 +159,16 @@ export default function OfferStack() {
         >
           <button
             type="button"
-            onClick={() => {
-              if (BUY_NOW_LINK && BUY_NOW_LINK.startsWith('http')) {
-                window.location.href = BUY_NOW_LINK;
-              } else {
-                scrollToSection('order');
-              }
-            }}
-            className="group inline-flex items-center justify-center gap-2.5 bg-green-brand hover:bg-green-hover text-black-deep font-extrabold text-xs sm:text-sm uppercase tracking-wider px-8 py-4 rounded-xl transition-all duration-200 active:scale-[0.97] animate-glow shadow-xl shadow-green-brand/20 cursor-pointer w-full sm:w-auto"
+            onClick={handleOrder}
+            className="group inline-flex items-center justify-center gap-2.5 bg-green-brand hover:bg-green-hover text-black-deep font-black text-xs sm:text-sm uppercase tracking-wider px-8 py-4 rounded-xl transition-all duration-200 active:scale-[0.97] animate-glow shadow-xl shadow-green-brand/20 cursor-pointer w-full sm:w-auto"
           >
-            <span>Claim {selected === 1 ? '1 Belt (₦22,500)' : '2 Belts (₦40,000)'} — Pay on Delivery</span>
+            <span>
+              Claim {selected === 1 ? `1 Belt (₦${PRICE_PROMO})` : `2 Belts (₦${PRICE_BUNDLE_2})`} — 30% Off
+            </span>
             <ChevronRight size={18} strokeWidth={2.5} className="transition-transform group-hover:translate-x-1" />
           </button>
           <p className="text-xs text-slate-text font-normal mt-3">
-            Free insured delivery across all 36 states + FCT Abuja
+            Instant online checkout with immediate admission to the VIP Delivery Tracking Group.
           </p>
         </motion.div>
 

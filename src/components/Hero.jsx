@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowDown, ChevronRight, CheckCircle2, PackageCheck, Sparkles } from 'lucide-react';
-import { BUY_NOW_LINK, scrollToSection } from '../config/links';
+import { ArrowDown, ChevronRight, CheckCircle2, Users, Sparkles } from 'lucide-react';
+import { BUY_NOW_LINK, scrollToSection, PRICE_PROMO, PRICE_ORIGINAL, PROMO_EXPIRY_DATE } from '../config/links';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -25,6 +25,12 @@ const views = [
     src: '/assets/electric_heating_belt.jpg',
     caption: 'Ergonomic Body Fit',
   },
+  {
+    id: 'display',
+    label: 'Digital Controls',
+    src: '/assets/bizthom_2.webp',
+    caption: 'Smart Display Unit',
+  },
 ];
 
 export default function Hero() {
@@ -32,7 +38,7 @@ export default function Hero() {
 
   const handleOrderClick = () => {
     if (BUY_NOW_LINK && BUY_NOW_LINK.startsWith('http')) {
-      window.location.href = BUY_NOW_LINK;
+      window.open(BUY_NOW_LINK, '_blank');
     } else {
       scrollToSection('order');
     }
@@ -50,6 +56,18 @@ export default function Hero() {
           {/* Copy Column (Centralized on mobile, left-aligned on desktop) */}
           <div className="lg:col-span-7 order-1 text-center lg:text-left">
             
+            {/* Promo Expiry Pill Tag */}
+            <motion.div
+              custom={0}
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              className="inline-flex items-center gap-2 mb-4 bg-green-brand/10 border border-green-brand/30 rounded-full px-3.5 py-1 text-xs font-bold text-green-brand tracking-wider uppercase"
+            >
+              <Sparkles size={13} className="text-green-brand" />
+              <span>30% Special Discount — Valid till {PROMO_EXPIRY_DATE}</span>
+            </motion.div>
+
             {/* Main Headline in Ultra-Bold Raleway (font-black) */}
             <motion.h1
               custom={0}
@@ -59,13 +77,13 @@ export default function Hero() {
               className="font-heading text-3xl sm:text-5xl lg:text-[3.85rem] font-black leading-[1.12] tracking-tight mb-5 sm:mb-6 text-white-off text-center lg:text-left"
             >
               End Menstrual Pain in{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-brand via-emerald-400 to-teal-300">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-brand via-lime-300 to-green-400">
                 3 Seconds Flat
               </span>{' '}
               — Without Swallowing Another Pill.
             </motion.h1>
 
-            {/* Subheading (Centered on mobile with mx-auto) */}
+            {/* Subheading */}
             <motion.p
               custom={1}
               variants={fadeUp}
@@ -74,11 +92,11 @@ export default function Hero() {
               className="text-base sm:text-lg lg:text-xl text-slate-text font-normal leading-relaxed mb-8 max-w-2xl mx-auto lg:mx-0 text-center lg:text-left"
             >
               The Urban Finds™ Wearable Heat & Vibration Therapy Belt is precision-engineered
-              to keep you active, comfortable, and in full control of your schedule. 
+              to keep you active, comfortable, and in full control of your month. 
               No drugs. No grogginess. Just fast, deep thermal relief right where cramps strike.
             </motion.p>
 
-            {/* CTA Group (Centered on mobile) */}
+            {/* CTA Group */}
             <motion.div
               custom={2}
               variants={fadeUp}
@@ -91,21 +109,21 @@ export default function Hero() {
                 onClick={handleOrderClick}
                 className="w-full sm:w-auto group relative inline-flex items-center justify-center gap-3 bg-green-brand hover:bg-green-hover text-black-deep font-black text-sm sm:text-base uppercase tracking-wider px-8 py-4 rounded-xl transition-all duration-200 active:scale-[0.97] animate-glow shadow-xl shadow-green-brand/20 cursor-pointer"
               >
-                <span>Order Now — Pay On Delivery</span>
+                <span>Claim 30% Off — Pay &#8358;{PRICE_PROMO}</span>
                 <ChevronRight size={18} strokeWidth={2.5} className="transition-transform group-hover:translate-x-1" />
               </button>
 
               <button
                 type="button"
-                onClick={() => scrollToSection('how-it-works')}
+                onClick={() => scrollToSection('video-demo')}
                 className="inline-flex items-center justify-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-text hover:text-white-off py-3 px-4 rounded-xl border border-transparent hover:border-navy-lighter/40 transition-colors cursor-pointer"
               >
                 <ArrowDown size={14} className="text-green-brand animate-bounce" />
-                <span>See How It Works</span>
+                <span>Watch Video Demo</span>
               </button>
             </motion.div>
 
-            {/* Micro Guarantees (Centered on mobile) */}
+            {/* Micro Guarantees (No POD, transparent tracking guarantee) */}
             <motion.div
               custom={3}
               variants={fadeUp}
@@ -115,11 +133,11 @@ export default function Hero() {
             >
               <span className="flex items-center gap-1.5">
                 <CheckCircle2 size={15} className="text-green-brand shrink-0" />
-                100% Drug-Free
+                100% Drug-Free Relief
               </span>
               <span className="flex items-center gap-1.5">
-                <PackageCheck size={15} className="text-green-brand shrink-0" />
-                Pay on Delivery Nationwide
+                <Users size={15} className="text-green-brand shrink-0" />
+                Live VIP Delivery Group Updates
               </span>
               <span className="flex items-center gap-1.5">
                 <Sparkles size={15} className="text-green-brand shrink-0" />
@@ -136,7 +154,7 @@ export default function Hero() {
             animate="visible"
             className="lg:col-span-5 order-2 flex flex-col items-center"
           >
-            {/* Smooth gentle gravitation/floating motion + spacious, uncompacted width */}
+            {/* Smooth gentle gravitation/floating motion + spacious width */}
             <motion.div
               animate={{ y: [-6, 6, -6] }}
               transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
@@ -169,13 +187,13 @@ export default function Hero() {
                 </div>
 
                 {/* View Switcher */}
-                <div className="grid grid-cols-2 gap-2.5 sm:gap-3 mt-3.5 sm:mt-4">
+                <div className="grid grid-cols-3 gap-2 mt-3.5 sm:mt-4">
                   {views.map((v, idx) => (
                     <button
                       key={v.id}
                       type="button"
                       onClick={() => setActiveView(idx)}
-                      className={`flex items-center gap-2 p-2 rounded-xl border text-left transition-all duration-200 cursor-pointer active:scale-95 ${
+                      className={`flex flex-col items-center p-2 rounded-xl border text-center transition-all duration-200 cursor-pointer active:scale-95 ${
                         activeView === idx
                           ? 'border-green-brand bg-green-brand/10 ring-1 ring-green-brand/30'
                           : 'border-navy-lighter/30 bg-navy/30 hover:border-navy-lighter/60'
@@ -184,16 +202,11 @@ export default function Hero() {
                       <img
                         src={v.src}
                         alt=""
-                        className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg object-cover shrink-0"
+                        className="w-8 h-8 rounded-lg object-cover mb-1 shrink-0"
                       />
-                      <div className="min-w-0">
-                        <p className={`text-[11px] sm:text-xs font-bold truncate ${activeView === idx ? 'text-green-brand' : 'text-slate-light'}`}>
-                          {v.label}
-                        </p>
-                        <p className="text-[10px] text-slate-text font-normal truncate">
-                          {idx === 0 ? 'Gift Box' : 'Belt Strap'}
-                        </p>
-                      </div>
+                      <p className={`text-[10px] font-bold truncate ${activeView === idx ? 'text-green-brand' : 'text-slate-light'}`}>
+                        {v.label}
+                      </p>
                     </button>
                   ))}
                 </div>
@@ -201,14 +214,14 @@ export default function Hero() {
                 {/* Price Bar */}
                 <div className="mt-3.5 sm:mt-4 pt-3.5 sm:pt-4 border-t border-navy-lighter/25 flex items-center justify-between">
                   <div>
-                    <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-slate-text font-bold">One-Time Price</span>
+                    <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-slate-text font-bold">Promo Price</span>
                     <div className="flex items-baseline gap-2">
-                      <span className="font-heading text-2xl sm:text-3xl font-black text-green-brand">&#8358;22,500</span>
-                      <span className="text-xs text-slate-text font-medium line-through">&#8358;35,000</span>
+                      <span className="font-heading text-2xl sm:text-3xl font-black text-green-brand">&#8358;{PRICE_PROMO}</span>
+                      <span className="text-xs text-slate-text font-medium line-through">&#8358;{PRICE_ORIGINAL}</span>
                     </div>
                   </div>
                   <span className="border-l-2 border-green-brand pl-2.5 py-0.5 text-[11px] sm:text-xs font-bold text-green-brand tracking-wider uppercase">
-                    Save 35%
+                    30% Off Till Dec 30
                   </span>
                 </div>
 

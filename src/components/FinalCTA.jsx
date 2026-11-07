@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
-import { ChevronRight, ShieldCheck, Heart } from 'lucide-react';
-import { BUY_NOW_LINK, scrollToSection } from '../config/links';
+import { ChevronRight, ShieldCheck, Heart, Users, Sparkles } from 'lucide-react';
+import { BUY_NOW_LINK, scrollToSection, PRICE_PROMO, PROMO_EXPIRY_DATE } from '../config/links';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -10,6 +10,14 @@ const fadeUp = {
 
 export default function FinalCTA() {
   const [ref, inView] = useInView();
+
+  const handleOrder = () => {
+    if (BUY_NOW_LINK && BUY_NOW_LINK.startsWith('http')) {
+      window.open(BUY_NOW_LINK, '_blank');
+    } else {
+      scrollToSection('order');
+    }
+  };
 
   return (
     <section ref={ref} className="relative py-20 sm:py-28 bg-gradient-to-t from-black-deep via-navy/50 to-black-deep overflow-hidden">
@@ -40,27 +48,21 @@ export default function FinalCTA() {
 
           <button
             type="button"
-            onClick={() => {
-              if (BUY_NOW_LINK && BUY_NOW_LINK.startsWith('http')) {
-                window.location.href = BUY_NOW_LINK;
-              } else {
-                scrollToSection('order');
-              }
-            }}
-            className="group inline-flex items-center gap-2.5 bg-green-brand hover:bg-green-hover text-black-deep font-extrabold text-xs sm:text-sm uppercase tracking-wider px-9 py-4.5 rounded-xl transition-all duration-200 active:scale-[0.97] animate-glow shadow-xl shadow-green-brand/20 cursor-pointer"
+            onClick={handleOrder}
+            className="group inline-flex items-center gap-2.5 bg-green-brand hover:bg-green-hover text-black-deep font-black text-xs sm:text-sm uppercase tracking-wider px-9 py-4.5 rounded-xl transition-all duration-200 active:scale-[0.97] animate-glow shadow-xl shadow-green-brand/20 cursor-pointer"
           >
-            <span>Claim Yours Now — Pay &#8358;22,500 On Delivery</span>
+            <span>Claim Yours Now — Pay &#8358;{PRICE_PROMO} (30% Off)</span>
             <ChevronRight size={18} strokeWidth={2.5} className="transition-transform group-hover:translate-x-1" />
           </button>
 
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-8 text-xs sm:text-sm text-slate-text font-medium">
             <span className="flex items-center gap-1.5">
-              <ShieldCheck size={16} className="text-green-brand" />
-              Pay on Delivery Available Nationwide
+              <Sparkles size={16} className="text-green-brand" />
+              Valid Till {PROMO_EXPIRY_DATE}
             </span>
             <span className="flex items-center gap-1.5">
-              <ShieldCheck size={16} className="text-green-brand" />
-              Free Insured Delivery on All Orders
+              <Users size={16} className="text-green-brand" />
+              VIP Delivery Group Link in 5–10 Mins
             </span>
             <span className="flex items-center gap-1.5">
               <ShieldCheck size={16} className="text-green-brand" />

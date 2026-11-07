@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { PRICE_PROMO, PROMO_EXPIRY_DATE } from '../config/links';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -14,8 +15,8 @@ const faqs = [
     a: 'It wraps around your lower abdomen like an ergonomic belt and delivers targeted, steady graphene warmth right where the cramps live. Controlled heat relaxes uterine muscle contractions that cause gripping pain — so instead of tensing up and fighting through the day, your body softens and breathes. You wear it, you feel relief within minutes, you keep moving.',
   },
   {
-    q: 'Can I wear it outside — to work, to the market, out and about?',
-    a: "Yes, and that is the entire design purpose. It sits completely flat under your clothes with an ultra-thin 3mm profile so nobody knows it is there but you. Whether you are leading a meeting, driving in traffic, or running errands — the relief stays with you.",
+    q: 'Can I wear it outside — to work, to lectures, out and about?',
+    a: "Yes, and that is the entire design purpose. It sits completely flat under your clothes with an ultra-thin 3mm profile so nobody knows it is there but you. Whether you are leading a meeting, sitting in class, driving in traffic, or running errands — the relief stays with you.",
   },
   {
     q: 'Is it safe? I have a sensitive system.',
@@ -23,15 +24,15 @@ const faqs = [
   },
   {
     q: 'How long does it last? Will I need to buy another one soon?',
-    a: "With standard care, it is engineered to last through years of menstrual cycles. That is why the one-time cost of ₦22,500 makes financial sense — you are not restocking expensive pads, patches, or pain pills every single month.",
+    a: `With standard care, it is engineered to last through years of menstrual cycles. That is why the one-time cost of ₦${PRICE_PROMO} makes financial sense — you are not restocking expensive pads, patches, or pain pills every single month.`,
   },
   {
     q: "What if it does not work for me?",
     a: "We back every single belt with a 30-Day Zero-Risk Guarantee. If you use it and do not feel genuine cramp relief, reach out to our team directly on WhatsApp or phone for an immediate resolution or refund. We are here for the long run.",
   },
   {
-    q: 'How does Pay on Delivery work?',
-    a: "After you submit your order form, our team calls or messages you to confirm your address. We dispatch your package via priority insured courier. When the delivery rider arrives at your doorstep, you inspect the box first, and only then do you pay via cash or bank transfer.",
+    q: 'How does payment and the VIP delivery tracking group work?',
+    a: `You complete your payment securely on our checkout portal at the promotional 30% discount rate of ₦${PRICE_PROMO} (valid till ${PROMO_EXPIRY_DATE}). Within 5–10 minutes of confirmation, you receive an invitation to our private Delivery & Support Community. In the group, our dispatchers provide continuous live updates on your shipment until your package arrives safely at your doorstep.`,
   },
 ];
 
