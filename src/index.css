@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  --color-black-deep: #050811;
+  --color-black-card: #0A0F1D;
+  --color-navy: #0F172A;
+  --color-navy-light: #1E293B;
+  --color-navy-lighter: #334155;
+  --color-green-brand: #10B981;
+  --color-green-hover: #059669;
+  --color-green-glow: rgba(16, 185, 129, 0.35);
+  --color-slate-text: #94A3B8;
+  --color-slate-light: #CBD5E1;
+  --color-white-off: #F8FAFC;
+
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+/* ── Base ──────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-black-deep);
+  color: var(--color-white-off);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbar ─────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-black-deep); }
+::-webkit-scrollbar-thumb { background: var(--color-navy-lighter); border-radius: 3px; }
+
+/* ── Ticker Animation ─────────────────────────────── */
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-ticker { animation: ticker-scroll 30s linear infinite; }
+
+/* ── Glow pulse on CTA buttons ────────────────────── */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px var(--color-green-glow), 0 0 60px rgba(16,185,129,0.1); }
+  50% { box-shadow: 0 0 30px var(--color-green-glow), 0 0 80px rgba(16,185,129,0.2); }
+}
+.animate-glow { animation: glow-pulse 2.5s ease-in-out infinite; }
+
+/* ── Selection ─────────────────────────────────────── */
+::selection {
+  background-color: var(--color-green-brand);
+  color: var(--color-black-deep);
+}
+
