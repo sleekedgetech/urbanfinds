@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
-import { ChevronRight, ShieldCheck, Heart, Users, Sparkles } from 'lucide-react';
+import { ChevronRight, ShieldCheck, Heart, Users, Tag } from 'lucide-react';
 import { BUY_NOW_LINK, scrollToSection, PRICE_PROMO, PROMO_EXPIRY_DATE } from '../config/links';
 
 const fadeUp = {
@@ -57,7 +57,7 @@ export default function FinalCTA() {
 
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-8 text-xs sm:text-sm text-slate-text font-medium">
             <span className="flex items-center gap-1.5">
-              <Sparkles size={16} className="text-green-brand" />
+              <Tag size={15} className="text-green-brand" />
               Valid Till {PROMO_EXPIRY_DATE}
             </span>
             <span className="flex items-center gap-1.5">

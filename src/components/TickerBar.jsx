@@ -1,8 +1,8 @@
-import { Sparkles, Clock, ShieldCheck, Users, Zap } from 'lucide-react';
+import { Tag, Clock, ShieldCheck, Users, Zap } from 'lucide-react';
 import { PRICE_PROMO, PROMO_EXPIRY_DATE } from '../config/links';
 
 const items = [
-  { icon: Sparkles, text: `30% Special Promo: ₦${PRICE_PROMO} Valid Till ${PROMO_EXPIRY_DATE}` },
+  { icon: Tag, text: `30% Special Promo: ₦${PRICE_PROMO} Valid Till ${PROMO_EXPIRY_DATE}` },
   { icon: Users, text: 'Live Delivery & Support Group Access Within 5-10 Mins' },
   { icon: Clock, text: 'Fast Priority Nationwide Dispatch' },
   { icon: Zap, text: 'Instant 3-Second Graphene Heat Therapy' },

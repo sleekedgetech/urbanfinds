@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowDown, ChevronRight, CheckCircle2, Users, Sparkles } from 'lucide-react';
+import { ArrowDown, ChevronRight, CheckCircle2, Users, ShieldCheck } from 'lucide-react';
 import { BUY_NOW_LINK, scrollToSection, PRICE_PROMO, PRICE_ORIGINAL, PROMO_EXPIRY_DATE } from '../config/links';
 
 const fadeUp = {
@@ -48,7 +48,7 @@ export default function Hero() {
     <section className="relative overflow-hidden pt-6 pb-16 lg:py-20">
       {/* Background illumination */}
       <div className="absolute inset-0 bg-gradient-to-b from-navy/30 via-black-deep to-black-deep pointer-events-none" />
-      <div className="absolute top-16 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-green-brand/[0.04] rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-16 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-green-brand/[0.04] blur-[140px] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 w-full">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
@@ -56,15 +56,15 @@ export default function Hero() {
           {/* Copy Column (Centralized on mobile, left-aligned on desktop) */}
           <div className="lg:col-span-7 order-1 text-center lg:text-left">
             
-            {/* Promo Expiry Pill Tag */}
+            {/* Non-Capsule Eyebrow Header (No Capsule Pill, No AI Sparkles) */}
             <motion.div
               custom={0}
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="inline-flex items-center gap-2 mb-4 bg-green-brand/10 border border-green-brand/30 rounded-full px-3.5 py-1 text-xs font-bold text-green-brand tracking-wider uppercase"
+              className="flex items-center justify-center lg:justify-start gap-2 mb-4 text-xs font-extrabold text-green-brand uppercase tracking-widest"
             >
-              <Sparkles size={13} className="text-green-brand" />
+              <span className="w-2 h-2 rounded-xs bg-green-brand" />
               <span>30% Special Discount — Valid till {PROMO_EXPIRY_DATE}</span>
             </motion.div>
 
@@ -123,13 +123,13 @@ export default function Hero() {
               </button>
             </motion.div>
 
-            {/* Micro Guarantees (No POD, transparent tracking guarantee) */}
+            {/* Micro Guarantees (Clean, No AI Sparkles, No Capsules) */}
             <motion.div
               custom={3}
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="flex flex-wrap items-center justify-center lg:justify-start gap-x-5 gap-y-2 pt-5 border-t border-navy-lighter/20 text-xs text-slate-text font-medium"
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2.5 pt-5 border-t border-navy-lighter/20 text-xs text-slate-text font-medium"
             >
               <span className="flex items-center gap-1.5">
                 <CheckCircle2 size={15} className="text-green-brand shrink-0" />
@@ -140,13 +140,13 @@ export default function Hero() {
                 Live VIP Delivery Group Updates
               </span>
               <span className="flex items-center gap-1.5">
-                <Sparkles size={15} className="text-green-brand shrink-0" />
-                30-Day Zero-Risk Guarantee
+                <ShieldCheck size={15} className="text-green-brand shrink-0" />
+                30-Day Money-Back Guarantee
               </span>
             </motion.div>
           </div>
 
-          {/* Product Media Column with Smooth Levitation/Gravitation Animation */}
+          {/* Product Media Column with Levitation */}
           <motion.div
             custom={2}
             variants={fadeUp}
@@ -154,16 +154,16 @@ export default function Hero() {
             animate="visible"
             className="lg:col-span-5 order-2 flex flex-col items-center"
           >
-            {/* Smooth gentle gravitation/floating motion + spacious width */}
+            {/* Smooth gravitation/floating motion */}
             <motion.div
               animate={{ y: [-6, 6, -6] }}
               transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
               className="relative w-full max-w-[360px] sm:max-w-md lg:max-w-[450px] mx-auto"
             >
-              {/* Soft Backlight */}
+              {/* Backlight */}
               <div className="absolute inset-0 bg-green-brand/10 rounded-3xl blur-[60px] scale-95" />
               
-              {/* Product Container */}
+              {/* Container Card */}
               <div className="relative bg-black-card border border-navy-lighter/40 rounded-3xl p-4 sm:p-5 shadow-2xl shadow-black/80 backdrop-blur-sm">
                 
                 {/* Main Image Frame */}

@@ -263,7 +263,7 @@ export default function ProductShowcase() {
             {
               step: '04',
               title: 'Zero Re-Stocking Cost',
-              desc: 'Rechargeable lithium battery lasts multiple cycles. Say goodbye to spending ₦22,500 every single year.',
+              desc: 'Rechargeable lithium battery lasts multiple cycles. Say goodbye to spending over ₦28,275 every single year on disposables.',
             },
           ].map((item, i) => (
             <motion.div

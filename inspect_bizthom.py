@@ -25,3 +25,4 @@ for form in soup.find_all('form'):
 # Find text containing Naira
 for el in soup.find_all(text=lambda t: t and ('₦' in t or 'NGN' in t or '21' in t or '28' in t)):
     print("Price match:", el.strip())
+

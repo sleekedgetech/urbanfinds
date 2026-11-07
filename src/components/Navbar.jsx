@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronRight, Sparkles } from 'lucide-react';
+import { Menu, X, ChevronRight, Tag } from 'lucide-react';
 import { BUY_NOW_LINK, scrollToSection, PRICE_PROMO, PROMO_EXPIRY_DATE } from '../config/links';
 
 export default function Navbar() {
@@ -57,7 +57,7 @@ export default function Navbar() {
           <span className="font-heading font-black text-2xl sm:text-[1.65rem] tracking-tight text-white-off leading-none">
             URBAN<span className="text-green-brand font-black">FINDS</span>
           </span>
-          <span className="w-1.5 h-1.5 rounded-full bg-green-brand mb-1 group-hover:scale-125 transition-transform" />
+          <span className="w-1.5 h-1.5 rounded-xs bg-green-brand mb-1 group-hover:scale-125 transition-transform" />
         </button>
 
         {/* Desktop Navigation Links */}
@@ -77,7 +77,7 @@ export default function Navbar() {
         {/* Right Desktop CTA */}
         <div className="hidden sm:flex items-center gap-4">
           <div className="hidden xl:flex items-center gap-1.5 text-xs text-green-brand font-bold uppercase tracking-wider">
-            <Sparkles size={14} className="text-green-brand" />
+            <Tag size={13} className="text-green-brand" />
             <span>30% Off Till {PROMO_EXPIRY_DATE}</span>
           </div>
 
