@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Star, ArrowDown, ChevronRight, CheckCircle2, PackageCheck, Sparkles } from 'lucide-react';
+import { ArrowDown, ChevronRight, CheckCircle2, PackageCheck, Sparkles } from 'lucide-react';
 import { BUY_NOW_LINK, scrollToSection } from '../config/links';
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 35 },
+  hidden: { opacity: 0, y: 30 },
   visible: (i) => ({
     opacity: 1,
     y: 0,
@@ -47,34 +47,16 @@ export default function Hero() {
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 w-full">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           
-          {/* Copy Column (Always comes first: order-1 on mobile & desktop) */}
-          <div className="lg:col-span-7 order-1">
+          {/* Copy Column (Centralized on mobile, left-aligned on desktop) */}
+          <div className="lg:col-span-7 order-1 text-center lg:text-left">
             
-            {/* Social Proof Line */}
-            <motion.div
+            {/* Main Headline in Ultra-Bold Raleway (font-black) */}
+            <motion.h1
               custom={0}
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="flex items-center gap-3 mb-5 sm:mb-6"
-            >
-              <div className="flex -space-x-0.5">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={15} className="text-green-brand fill-green-brand" />
-                ))}
-              </div>
-              <span className="text-[11px] sm:text-xs uppercase tracking-widest text-slate-text font-bold">
-                4.9/5 Rating · 1,420+ Nigerian Women Verified
-              </span>
-            </motion.div>
-
-            {/* Main Headline in Ultra-Bold Raleway (font-black) */}
-            <motion.h1
-              custom={1}
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              className="font-heading text-3xl sm:text-5xl lg:text-[3.85rem] font-black leading-[1.12] tracking-tight mb-5 sm:mb-6 text-white-off"
+              className="font-heading text-3xl sm:text-5xl lg:text-[3.85rem] font-black leading-[1.12] tracking-tight mb-5 sm:mb-6 text-white-off text-center lg:text-left"
             >
               End Menstrual Pain in{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-brand via-emerald-400 to-teal-300">
@@ -83,31 +65,31 @@ export default function Hero() {
               — Without Swallowing Another Pill.
             </motion.h1>
 
-            {/* Subheading */}
+            {/* Subheading (Centered on mobile with mx-auto) */}
             <motion.p
-              custom={2}
+              custom={1}
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="text-base sm:text-lg lg:text-xl text-slate-text font-normal leading-relaxed mb-8 max-w-2xl"
+              className="text-base sm:text-lg lg:text-xl text-slate-text font-normal leading-relaxed mb-8 max-w-2xl mx-auto lg:mx-0 text-center lg:text-left"
             >
               The Urban Finds™ Wearable Heat & Vibration Therapy Belt is precision-engineered
               to keep you active, comfortable, and in full control of your schedule. 
               No drugs. No grogginess. Just fast, deep thermal relief right where cramps strike.
             </motion.p>
 
-            {/* CTA Group with Pure Links (Zero Hash) */}
+            {/* CTA Group (Centered on mobile) */}
             <motion.div
-              custom={3}
+              custom={2}
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-8"
+              className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 mb-8"
             >
               <button
                 type="button"
                 onClick={handleOrderClick}
-                className="group relative inline-flex items-center justify-center gap-3 bg-green-brand hover:bg-green-hover text-black-deep font-black text-sm sm:text-base uppercase tracking-wider px-8 py-4 rounded-xl transition-all duration-200 active:scale-[0.97] animate-glow shadow-xl shadow-green-brand/20 cursor-pointer"
+                className="w-full sm:w-auto group relative inline-flex items-center justify-center gap-3 bg-green-brand hover:bg-green-hover text-black-deep font-black text-sm sm:text-base uppercase tracking-wider px-8 py-4 rounded-xl transition-all duration-200 active:scale-[0.97] animate-glow shadow-xl shadow-green-brand/20 cursor-pointer"
               >
                 <span>Order Now — Pay On Delivery</span>
                 <ChevronRight size={18} strokeWidth={2.5} className="transition-transform group-hover:translate-x-1" />
@@ -123,13 +105,13 @@ export default function Hero() {
               </button>
             </motion.div>
 
-            {/* Micro Guarantees */}
+            {/* Micro Guarantees (Centered on mobile) */}
             <motion.div
-              custom={4}
+              custom={3}
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="flex flex-wrap gap-x-5 gap-y-2 pt-5 border-t border-navy-lighter/20 text-xs text-slate-text font-medium"
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-x-5 gap-y-2 pt-5 border-t border-navy-lighter/20 text-xs text-slate-text font-medium"
             >
               <span className="flex items-center gap-1.5">
                 <CheckCircle2 size={15} className="text-green-brand shrink-0" />
@@ -146,7 +128,7 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Product Media Column (Order-2: comes AFTER text on mobile & desktop, controlled size) */}
+          {/* Product Media Column with Smooth Levitation/Gravitation Animation */}
           <motion.div
             custom={2}
             variants={fadeUp}
@@ -154,13 +136,17 @@ export default function Hero() {
             animate="visible"
             className="lg:col-span-5 order-2 flex flex-col items-center"
           >
-            {/* Controlled width on mobile: max-w-[280px], sm:max-w-sm, lg:max-w-md */}
-            <div className="relative w-full max-w-[280px] sm:max-w-sm lg:max-w-md mx-auto">
+            {/* Smooth gentle gravitation/floating motion + increased mobile width */}
+            <motion.div
+              animate={{ y: [-5, 5, -5] }}
+              transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
+              className="relative w-full max-w-[340px] sm:max-w-sm lg:max-w-md mx-auto"
+            >
               {/* Soft Backlight */}
               <div className="absolute inset-0 bg-green-brand/10 rounded-3xl blur-[60px] scale-95" />
               
               {/* Product Container */}
-              <div className="relative bg-black-card border border-navy-lighter/40 rounded-3xl p-3.5 sm:p-5 shadow-2xl shadow-black/80 backdrop-blur-sm">
+              <div className="relative bg-black-card border border-navy-lighter/40 rounded-3xl p-4 sm:p-5 shadow-2xl shadow-black/80 backdrop-blur-sm">
                 
                 {/* Main Image Frame */}
                 <div className="relative aspect-square w-full rounded-2xl overflow-hidden bg-navy/40 flex items-center justify-center">
@@ -177,19 +163,19 @@ export default function Hero() {
                     />
                   </AnimatePresence>
 
-                  <div className="absolute top-2.5 left-2.5 bg-black-deep/85 border border-navy-lighter/40 rounded-md px-2 py-0.5 text-[10px] sm:text-xs font-semibold text-slate-light tracking-wide">
+                  <div className="absolute top-2.5 left-2.5 bg-black-deep/85 border border-navy-lighter/40 rounded-md px-2.5 py-1 text-[11px] sm:text-xs font-semibold text-slate-light tracking-wide">
                     {views[activeView].caption}
                   </div>
                 </div>
 
                 {/* View Switcher */}
-                <div className="grid grid-cols-2 gap-2 sm:gap-3 mt-3 sm:mt-4">
+                <div className="grid grid-cols-2 gap-2.5 sm:gap-3 mt-3.5 sm:mt-4">
                   {views.map((v, idx) => (
                     <button
                       key={v.id}
                       type="button"
                       onClick={() => setActiveView(idx)}
-                      className={`flex items-center gap-2 p-1.5 sm:p-2 rounded-xl border text-left transition-all duration-200 cursor-pointer active:scale-95 ${
+                      className={`flex items-center gap-2 p-2 rounded-xl border text-left transition-all duration-200 cursor-pointer active:scale-95 ${
                         activeView === idx
                           ? 'border-green-brand bg-green-brand/10 ring-1 ring-green-brand/30'
                           : 'border-navy-lighter/30 bg-navy/30 hover:border-navy-lighter/60'
@@ -198,7 +184,7 @@ export default function Hero() {
                       <img
                         src={v.src}
                         alt=""
-                        className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg object-cover shrink-0"
+                        className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg object-cover shrink-0"
                       />
                       <div className="min-w-0">
                         <p className={`text-[11px] sm:text-xs font-bold truncate ${activeView === idx ? 'text-green-brand' : 'text-slate-light'}`}>
@@ -213,21 +199,21 @@ export default function Hero() {
                 </div>
 
                 {/* Price Bar */}
-                <div className="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-navy-lighter/25 flex items-center justify-between">
+                <div className="mt-3.5 sm:mt-4 pt-3.5 sm:pt-4 border-t border-navy-lighter/25 flex items-center justify-between">
                   <div>
                     <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-slate-text font-bold">One-Time Price</span>
                     <div className="flex items-baseline gap-2">
-                      <span className="font-heading text-xl sm:text-3xl font-black text-green-brand">&#8358;22,500</span>
-                      <span className="text-[11px] sm:text-xs text-slate-text font-medium line-through">&#8358;35,000</span>
+                      <span className="font-heading text-2xl sm:text-3xl font-black text-green-brand">&#8358;22,500</span>
+                      <span className="text-xs text-slate-text font-medium line-through">&#8358;35,000</span>
                     </div>
                   </div>
-                  <span className="border-l-2 border-green-brand pl-2 py-0.5 text-[10px] sm:text-xs font-bold text-green-brand tracking-wider uppercase">
+                  <span className="border-l-2 border-green-brand pl-2.5 py-0.5 text-[11px] sm:text-xs font-bold text-green-brand tracking-wider uppercase">
                     Save 35%
                   </span>
                 </div>
 
               </div>
-            </div>
+            </motion.div>
           </motion.div>
 
         </div>
