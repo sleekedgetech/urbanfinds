@@ -17,8 +17,8 @@ export default function TickerBar() {
         {doubled.map((item, i) => {
           const Icon = item.icon;
           return (
-            <span key={i} className="inline-flex items-center gap-2 mx-8 text-sm font-semibold tracking-wide uppercase">
-              <Icon size={15} strokeWidth={2.5} />
+            <span key={i} className="inline-flex items-center gap-2 mx-8 text-xs font-bold tracking-widest uppercase">
+              <Icon size={14} strokeWidth={2.5} />
               {item.text}
             </span>
           );

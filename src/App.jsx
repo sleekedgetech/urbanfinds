@@ -1,4 +1,5 @@
 import TickerBar from './components/TickerBar';
+import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import WhySection from './components/WhySection';
 import ProductShowcase from './components/ProductShowcase';
@@ -16,6 +17,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-black-deep text-white-off">
       <TickerBar />
+      <Navbar />
       <Hero />
       <WhySection />
       <ProductShowcase />

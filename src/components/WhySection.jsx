@@ -5,7 +5,7 @@ import { BUY_NOW_LINK } from '../config/links';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: 'easeOut' } },
 };
 
 const stagger = {
@@ -16,7 +16,7 @@ export default function WhySection() {
   const [ref, inView] = useInView();
 
   return (
-    <section ref={ref} className="relative py-20 sm:py-28 bg-navy/40">
+    <section ref={ref} className="relative py-20 sm:py-28 bg-navy/30">
       <div className="max-w-3xl mx-auto px-5 sm:px-8">
         <motion.div
           variants={stagger}
@@ -24,23 +24,27 @@ export default function WhySection() {
           animate={inView ? 'visible' : 'hidden'}
           className="text-center"
         >
-          <motion.p variants={fadeUp} className="text-green-brand font-semibold text-sm tracking-widest uppercase mb-4">
-            Why Get It
-          </motion.p>
+          <motion.div variants={fadeUp} className="flex items-center justify-center gap-2 mb-3">
+            <span className="w-6 h-px bg-green-brand" />
+            <span className="text-green-brand font-bold text-xs tracking-widest uppercase">
+              The Reality
+            </span>
+            <span className="w-6 h-px bg-green-brand" />
+          </motion.div>
 
-          <motion.h2 variants={fadeUp} className="font-heading text-3xl sm:text-4xl font-bold leading-snug mb-8">
+          <motion.h2 variants={fadeUp} className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-8 text-white-off">
             Sis, your period didn't come to ask for permission.
           </motion.h2>
 
-          <motion.div variants={fadeUp} className="space-y-6 text-slate-text text-base sm:text-lg leading-relaxed text-left sm:text-center">
+          <motion.div variants={fadeUp} className="space-y-6 text-slate-text text-base sm:text-lg font-normal leading-relaxed text-left sm:text-center">
             <p>
               It shows up every month. Whether you're in the middle of a
               presentation, chasing a deadline, or just trying to rest. And
               somewhere between the cramps that grip you at 6am and the warmth
               you have to perform at noon, something is almost forfeited —{' '}
-              <span className="text-white-off font-medium">
+              <strong className="text-white-off font-bold">
                 your goals, your rhythm, yourself.
-              </span>
+              </strong>
             </p>
 
             <p>
@@ -52,16 +56,16 @@ export default function WhySection() {
 
             <p>
               That knowing is why we brought the{' '}
-              <span className="text-green-brand font-semibold">
-                Menstrual Cramp Relief Belt
-              </span>{' '}
+              <strong className="text-green-brand font-bold">
+                Urban Finds Menstrual Cramp Relief Belt
+              </strong>{' '}
               to you. Not to pretend your period isn't real. But to sit with you
               in it — and carry some of the weight.
             </p>
 
-            <p className="text-white-off font-medium text-lg sm:text-xl">
+            <p className="text-white-off font-bold text-lg sm:text-xl pt-2">
               Because you deserve to show up in full, every week of every month.
-              <span className="text-green-brand"> Period.</span>
+              <span className="text-green-brand font-black"> Period.</span>
             </p>
 
             <div className="pt-6">
@@ -79,4 +83,3 @@ export default function WhySection() {
     </section>
   );
 }
-

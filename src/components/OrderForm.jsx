@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
 import { Send, ShieldCheck, Loader2, MessageSquare, CheckCircle, Package } from 'lucide-react';
-import { WHATSAPP_SUPPORT_LINK } from '../config/links';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -39,7 +38,6 @@ export default function OrderForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitting(true);
-    // Simulate real order processing
     setTimeout(() => {
       setSubmitting(false);
       setSubmitted(true);
@@ -64,7 +62,7 @@ export default function OrderForm() {
 
   return (
     <section ref={ref} id="order" className="relative py-20 sm:py-28 scroll-mt-6">
-      {/* Background radial glow */}
+      {/* Background illumination */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-green-brand/[0.04] rounded-full blur-[120px] pointer-events-none" />
 
       <div className="relative max-w-2xl mx-auto px-5 sm:px-8">
@@ -74,18 +72,18 @@ export default function OrderForm() {
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
           variants={fadeUp}
-          className="text-center mb-10"
+          className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 bg-green-brand/10 border border-green-brand/20 rounded-full px-4 py-1.5 mb-3">
-            <Package size={14} className="text-green-brand" />
-            <span className="text-xs font-semibold text-green-brand uppercase tracking-wider">
-              Pay Cash or Transfer on Delivery
+          <div className="flex items-center justify-center gap-2 mb-3">
+            <Package size={15} className="text-green-brand" />
+            <span className="text-xs font-bold text-green-brand uppercase tracking-widest">
+              Direct Checkout
             </span>
           </div>
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold mb-3">
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-3">
             Secure Your Relief Belt
           </h2>
-          <p className="text-slate-text text-sm sm:text-base max-w-lg mx-auto leading-relaxed">
+          <p className="text-slate-text text-sm sm:text-base font-normal max-w-lg mx-auto leading-relaxed">
             Fill in your delivery details below. You don't need a card — our courier delivers to your doorstep,
             you inspect your package, and only then do you pay.
           </p>
@@ -97,31 +95,31 @@ export default function OrderForm() {
             animate={{ opacity: 1, scale: 1 }}
             className="bg-black-card border border-green-brand/40 rounded-3xl p-6 sm:p-10 text-center shadow-2xl relative overflow-hidden"
           >
-            <div className="w-16 h-16 rounded-full bg-green-brand/10 border border-green-brand/30 flex items-center justify-center mx-auto mb-5 text-green-brand">
-              <CheckCircle size={32} />
+            <div className="w-14 h-14 rounded-2xl bg-green-brand/10 border border-green-brand/30 flex items-center justify-center mx-auto mb-5 text-green-brand">
+              <CheckCircle size={30} />
             </div>
 
-            <h3 className="font-heading text-2xl sm:text-3xl font-bold text-white-off mb-2">
+            <h3 className="font-heading text-2xl sm:text-3xl font-extrabold text-white-off mb-2">
               Order Confirmed Successfully!
             </h3>
             
-            <p className="text-slate-text text-sm sm:text-base max-w-md mx-auto mb-6">
-              Thank you, <strong className="text-white-off">{form.fullName}</strong>. Your order is registered in our fulfillment queue.
+            <p className="text-slate-text text-sm sm:text-base max-w-md mx-auto mb-6 font-normal">
+              Thank you, <strong className="text-white-off font-bold">{form.fullName}</strong>. Your order is registered in our fulfillment queue.
             </p>
 
             {/* Order summary card */}
             <div className="bg-navy/50 border border-navy-lighter/30 rounded-2xl p-4 sm:p-5 text-left mb-6 text-xs sm:text-sm space-y-2 max-w-md mx-auto">
               <div className="flex justify-between border-b border-navy-lighter/25 pb-2">
                 <span className="text-slate-text">Quantity / Color:</span>
-                <span className="text-white-off font-semibold">{form.quantity} Unit(s) ({form.color})</span>
+                <span className="text-white-off font-bold">{form.quantity} Unit(s) ({form.color})</span>
               </div>
               <div className="flex justify-between border-b border-navy-lighter/25 pb-2">
                 <span className="text-slate-text">Delivery Destination:</span>
-                <span className="text-white-off font-semibold">{form.state}</span>
+                <span className="text-white-off font-bold">{form.state}</span>
               </div>
-              <div className="flex justify-between pt-1 font-bold">
-                <span className="text-slate-light">Amount Due on Delivery:</span>
-                <span className="text-green-brand text-base">&#8358;{priceTotal}</span>
+              <div className="flex justify-between pt-1">
+                <span className="text-slate-light font-medium">Amount Due on Delivery:</span>
+                <span className="text-green-brand text-base font-extrabold">&#8358;{priceTotal}</span>
               </div>
             </div>
 
@@ -137,7 +135,7 @@ export default function OrderForm() {
                 <span>Instant Confirmation on WhatsApp</span>
               </a>
               
-              <p className="text-[11px] text-slate-text">
+              <p className="text-[11px] text-slate-text font-normal">
                 Tap above to immediately alert our dispatcher and expedite same-day packaging.
               </p>
             </div>
@@ -165,8 +163,8 @@ export default function OrderForm() {
                       : 'border-navy-lighter/30 bg-navy/40 hover:border-navy-lighter/60'
                   }`}
                 >
-                  <span className="block text-xs text-slate-text">1 Belt</span>
-                  <span className="font-heading text-lg font-bold text-green-brand">&#8358;22,500</span>
+                  <span className="block text-xs text-slate-text font-medium">1 Belt</span>
+                  <span className="font-heading text-lg font-extrabold text-green-brand">&#8358;22,500</span>
                 </button>
 
                 <button
@@ -178,11 +176,11 @@ export default function OrderForm() {
                       : 'border-navy-lighter/30 bg-navy/40 hover:border-navy-lighter/60'
                   }`}
                 >
-                  <span className="absolute -top-2 right-2 bg-green-brand text-black-deep text-[10px] font-bold px-2 py-0.5 rounded-full">
+                  <span className="absolute -top-2.5 right-2 bg-green-brand text-black-deep text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-md shadow-sm">
                     Save ₦5,000
                   </span>
-                  <span className="block text-xs text-slate-text">2 Belts (Sister Pack)</span>
-                  <span className="font-heading text-lg font-bold text-green-brand">&#8358;40,000</span>
+                  <span className="block text-xs text-slate-text font-medium">2 Belts (Sister Pack)</span>
+                  <span className="font-heading text-lg font-extrabold text-green-brand">&#8358;40,000</span>
                 </button>
               </div>
             </div>
@@ -201,7 +199,7 @@ export default function OrderForm() {
                     className={`p-3 rounded-xl border text-center transition-all duration-200 cursor-pointer active:scale-95 ${
                       form.color === c
                         ? 'border-green-brand bg-green-brand/10 ring-1 ring-green-brand/40 text-green-brand font-bold'
-                        : 'border-navy-lighter/30 bg-navy/40 text-slate-light hover:border-navy-lighter/60'
+                        : 'border-navy-lighter/30 bg-navy/40 text-slate-light font-medium hover:border-navy-lighter/60'
                     }`}
                   >
                     {c === 'Pink' ? 'Blossom Pink' : 'Pearl White'}
@@ -222,7 +220,7 @@ export default function OrderForm() {
                 onChange={handleChange}
                 required
                 placeholder="e.g. Chioma Adebayo"
-                className="w-full bg-navy/40 border border-navy-lighter/40 rounded-xl px-4 py-3.5 text-white-off placeholder:text-navy-lighter focus:outline-none focus:border-green-brand focus:ring-1 focus:ring-green-brand/40 transition-colors text-sm"
+                className="w-full bg-navy/40 border border-navy-lighter/40 rounded-xl px-4 py-3.5 text-white-off placeholder:text-navy-lighter focus:outline-none focus:border-green-brand focus:ring-1 focus:ring-green-brand/40 transition-colors text-sm font-normal"
               />
             </div>
 
@@ -239,7 +237,7 @@ export default function OrderForm() {
                   onChange={handleChange}
                   required
                   placeholder="e.g. 08012345678"
-                  className="w-full bg-navy/40 border border-navy-lighter/40 rounded-xl px-4 py-3.5 text-white-off placeholder:text-navy-lighter focus:outline-none focus:border-green-brand focus:ring-1 focus:ring-green-brand/40 transition-colors text-sm"
+                  className="w-full bg-navy/40 border border-navy-lighter/40 rounded-xl px-4 py-3.5 text-white-off placeholder:text-navy-lighter focus:outline-none focus:border-green-brand focus:ring-1 focus:ring-green-brand/40 transition-colors text-sm font-normal"
                 />
               </div>
               <div>
@@ -252,7 +250,7 @@ export default function OrderForm() {
                   value={form.altPhone}
                   onChange={handleChange}
                   placeholder="e.g. 09087654321"
-                  className="w-full bg-navy/40 border border-navy-lighter/40 rounded-xl px-4 py-3.5 text-white-off placeholder:text-navy-lighter focus:outline-none focus:border-green-brand focus:ring-1 focus:ring-green-brand/40 transition-colors text-sm"
+                  className="w-full bg-navy/40 border border-navy-lighter/40 rounded-xl px-4 py-3.5 text-white-off placeholder:text-navy-lighter focus:outline-none focus:border-green-brand focus:ring-1 focus:ring-green-brand/40 transition-colors text-sm font-normal"
                 />
               </div>
             </div>
@@ -269,7 +267,7 @@ export default function OrderForm() {
                 onChange={handleChange}
                 required
                 placeholder="House number, street name, bus stop or closest landmark"
-                className="w-full bg-navy/40 border border-navy-lighter/40 rounded-xl px-4 py-3.5 text-white-off placeholder:text-navy-lighter focus:outline-none focus:border-green-brand focus:ring-1 focus:ring-green-brand/40 transition-colors text-sm"
+                className="w-full bg-navy/40 border border-navy-lighter/40 rounded-xl px-4 py-3.5 text-white-off placeholder:text-navy-lighter focus:outline-none focus:border-green-brand focus:ring-1 focus:ring-green-brand/40 transition-colors text-sm font-normal"
               />
             </div>
 
@@ -283,10 +281,10 @@ export default function OrderForm() {
                 value={form.state}
                 onChange={handleChange}
                 required
-                className="w-full bg-navy/40 border border-navy-lighter/40 rounded-xl px-4 py-3.5 text-white-off focus:outline-none focus:border-green-brand focus:ring-1 focus:ring-green-brand/40 transition-colors text-sm cursor-pointer"
+                className="w-full bg-navy/40 border border-navy-lighter/40 rounded-xl px-4 py-3.5 text-white-off focus:outline-none focus:border-green-brand focus:ring-1 focus:ring-green-brand/40 transition-colors text-sm cursor-pointer font-medium"
               >
                 {nigerianStates.map((s) => (
-                  <option key={s} value={s} className="bg-black-deep text-white-off">
+                  <option key={s} value={s} className="bg-black-deep text-white-off font-medium">
                     {s}
                   </option>
                 ))}
@@ -304,18 +302,18 @@ export default function OrderForm() {
                 onChange={handleChange}
                 rows={2}
                 placeholder="Preferred delivery time, office reception instructions, etc."
-                className="w-full bg-navy/40 border border-navy-lighter/40 rounded-xl px-4 py-3.5 text-white-off placeholder:text-navy-lighter focus:outline-none focus:border-green-brand focus:ring-1 focus:ring-green-brand/40 transition-colors text-sm resize-none"
+                className="w-full bg-navy/40 border border-navy-lighter/40 rounded-xl px-4 py-3.5 text-white-off placeholder:text-navy-lighter focus:outline-none focus:border-green-brand focus:ring-1 focus:ring-green-brand/40 transition-colors text-sm resize-none font-normal"
               />
             </div>
 
             {/* Total Due Banner */}
             <div className="bg-navy/60 border border-navy-lighter/30 rounded-2xl p-4 flex items-center justify-between">
               <div>
-                <span className="text-xs text-slate-text uppercase tracking-wider block font-medium">Total to Pay Upon Delivery</span>
-                <span className="font-heading text-2xl font-bold text-green-brand">&#8358;{priceTotal}</span>
+                <span className="text-[11px] text-slate-text uppercase tracking-wider block font-bold">Total Due on Delivery</span>
+                <span className="font-heading text-2xl font-extrabold text-green-brand">&#8358;{priceTotal}</span>
               </div>
-              <span className="text-xs text-slate-light bg-navy-lighter/30 px-3 py-1.5 rounded-lg">
-                Free Nationwide Shipping Included
+              <span className="text-xs text-slate-light font-medium border-l border-navy-lighter/40 pl-3">
+                Free Shipping Included
               </span>
             </div>
 
@@ -323,7 +321,7 @@ export default function OrderForm() {
             <button
               type="submit"
               disabled={submitting}
-              className="w-full flex items-center justify-center gap-3 bg-green-brand hover:bg-green-hover disabled:opacity-70 text-black-deep font-bold text-base sm:text-lg py-4 sm:py-4.5 rounded-xl transition-all duration-200 active:scale-[0.98] animate-glow shadow-xl shadow-green-brand/20 cursor-pointer"
+              className="w-full flex items-center justify-center gap-3 bg-green-brand hover:bg-green-hover disabled:opacity-70 text-black-deep font-bold text-base sm:text-lg py-4 rounded-xl transition-all duration-200 active:scale-[0.98] animate-glow shadow-xl shadow-green-brand/20 cursor-pointer"
             >
               {submitting ? (
                 <>
@@ -339,9 +337,9 @@ export default function OrderForm() {
             </button>
 
             {/* Reassurance text */}
-            <p className="text-center text-xs text-slate-text flex items-center justify-center gap-2 pt-1">
+            <p className="text-center text-xs text-slate-text font-normal flex items-center justify-center gap-2 pt-1">
               <ShieldCheck size={14} className="text-green-brand shrink-0" />
-              <span>Zero card required. Inspect your item before paying. 30-day money-back guarantee.</span>
+              <span>Zero card required. Inspect item before paying. 30-day money-back guarantee.</span>
             </p>
           </motion.form>
         )}

@@ -31,31 +31,32 @@ export default function Hero() {
   const [activeView, setActiveView] = useState(0);
 
   return (
-    <section className="relative overflow-hidden min-h-[92dvh] flex items-center pt-4 pb-16 lg:py-20">
-      {/* Dynamic background lighting */}
+    <section className="relative overflow-hidden min-h-[90dvh] flex items-center pt-6 pb-16 lg:py-20">
+      {/* Background illumination */}
       <div className="absolute inset-0 bg-gradient-to-b from-navy/30 via-black-deep to-black-deep pointer-events-none" />
       <div className="absolute top-16 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-green-brand/[0.04] rounded-full blur-[140px] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 w-full">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-14 items-center">
           
-          {/* Copy Side (7 cols on desktop) */}
+          {/* Copy Column (7 cols) */}
           <div className="lg:col-span-7 order-2 lg:order-1">
-            {/* Trust badge */}
+            
+            {/* Social Proof Line (No Pill) */}
             <motion.div
               custom={0}
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="inline-flex items-center gap-2.5 bg-navy-light/70 border border-navy-lighter/40 rounded-full px-4 py-1.5 mb-6 backdrop-blur-sm"
+              className="flex items-center gap-3 mb-6"
             >
               <div className="flex -space-x-0.5">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={14} className="text-green-brand fill-green-brand" />
+                  <Star key={i} size={15} className="text-green-brand fill-green-brand" />
                 ))}
               </div>
-              <span className="text-xs sm:text-sm text-slate-light font-medium tracking-wide">
-                Rated 4.9/5 by 1,420+ Nigerian Women
+              <span className="text-xs uppercase tracking-widest text-slate-text font-bold">
+                4.9/5 Rating · 1,420+ Nigerian Women Verified
               </span>
             </motion.div>
 
@@ -65,10 +66,10 @@ export default function Hero() {
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="font-heading text-4xl sm:text-5xl lg:text-[3.65rem] font-bold leading-[1.12] tracking-tight mb-6"
+              className="font-heading text-4xl sm:text-5xl lg:text-[3.75rem] font-extrabold leading-[1.14] tracking-tight mb-6"
             >
               End Menstrual Pain in{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-brand to-emerald-300">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-brand via-emerald-400 to-teal-300 font-black">
                 3 Seconds Flat
               </span>{' '}
               — Without Swallowing Another Pill.
@@ -80,7 +81,7 @@ export default function Hero() {
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="text-base sm:text-lg lg:text-xl text-slate-text leading-relaxed mb-8 max-w-2xl"
+              className="text-base sm:text-lg lg:text-xl text-slate-text font-normal leading-relaxed mb-8 max-w-2xl"
             >
               The Urban Finds™ Wearable Heat & Vibration Therapy Belt is precision-engineered
               to keep you active, comfortable, and in full control of your schedule. 
@@ -105,20 +106,20 @@ export default function Hero() {
 
               <a
                 href="#how-it-works"
-                className="inline-flex items-center justify-center gap-2 text-sm text-slate-text hover:text-white-off py-3 px-4 rounded-xl border border-transparent hover:border-navy-lighter/40 transition-colors"
+                className="inline-flex items-center justify-center gap-2 text-sm font-semibold text-slate-text hover:text-white-off py-3 px-4 rounded-xl border border-transparent hover:border-navy-lighter/40 transition-colors"
               >
                 <ArrowDown size={15} className="text-green-brand animate-bounce" />
                 <span>See How It Works</span>
               </a>
             </motion.div>
 
-            {/* Micro-guarantees */}
+            {/* Micro Guarantees */}
             <motion.div
               custom={4}
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="flex flex-wrap gap-x-6 gap-y-2.5 pt-4 border-t border-navy-lighter/25 text-xs sm:text-sm text-slate-text"
+              className="flex flex-wrap gap-x-6 gap-y-2.5 pt-5 border-t border-navy-lighter/25 text-xs sm:text-sm text-slate-text font-medium"
             >
               <span className="flex items-center gap-2">
                 <CheckCircle2 size={16} className="text-green-brand shrink-0" />
@@ -135,7 +136,7 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Product Media Column (5 cols on desktop) */}
+          {/* Product Media Column (5 cols) */}
           <motion.div
             custom={2}
             variants={fadeUp}
@@ -144,13 +145,13 @@ export default function Hero() {
             className="lg:col-span-5 order-1 lg:order-2 flex flex-col items-center"
           >
             <div className="relative w-full max-w-md">
-              {/* Soft ambient backlight */}
+              {/* Backlight */}
               <div className="absolute inset-0 bg-green-brand/10 rounded-3xl blur-[70px] scale-95" />
               
-              {/* Product Card Container */}
+              {/* Container Card */}
               <div className="relative bg-black-card border border-navy-lighter/40 rounded-3xl p-4 sm:p-5 shadow-2xl shadow-black/80 backdrop-blur-sm">
                 
-                {/* Main View with smooth crossfade */}
+                {/* Image Frame */}
                 <div className="relative aspect-square w-full rounded-2xl overflow-hidden bg-navy/40 flex items-center justify-center">
                   <AnimatePresence mode="wait">
                     <motion.img
@@ -165,13 +166,13 @@ export default function Hero() {
                     />
                   </AnimatePresence>
 
-                  {/* Floating badge */}
-                  <div className="absolute top-3 left-3 bg-black-deep/80 backdrop-blur-md border border-navy-lighter/40 rounded-lg px-3 py-1 text-xs font-medium text-slate-light">
+                  {/* Clean Non-Pill Badge */}
+                  <div className="absolute top-3 left-3 bg-black-deep/85 border border-navy-lighter/40 rounded-md px-2.5 py-1 text-xs font-semibold text-slate-light tracking-wide">
                     {views[activeView].caption}
                   </div>
                 </div>
 
-                {/* Thumbnails / View Switcher with tactile feedback */}
+                {/* Gallery Switcher */}
                 <div className="grid grid-cols-2 gap-3 mt-4">
                   {views.map((v, idx) => (
                     <button
@@ -190,27 +191,27 @@ export default function Hero() {
                         className="w-10 h-10 rounded-lg object-cover shrink-0"
                       />
                       <div className="min-w-0">
-                        <p className={`text-xs font-semibold truncate ${activeView === idx ? 'text-green-brand' : 'text-slate-light'}`}>
+                        <p className={`text-xs font-bold truncate ${activeView === idx ? 'text-green-brand' : 'text-slate-light'}`}>
                           {v.label}
                         </p>
-                        <p className="text-[11px] text-slate-text truncate">
-                          {idx === 0 ? 'In Gift Box' : 'Belt Profile'}
+                        <p className="text-[11px] text-slate-text font-normal truncate">
+                          {idx === 0 ? 'Gift Box' : 'Belt Strap'}
                         </p>
                       </div>
                     </button>
                   ))}
                 </div>
 
-                {/* Price anchor highlight */}
+                {/* Price Line (No Pill) */}
                 <div className="mt-4 pt-4 border-t border-navy-lighter/25 flex items-center justify-between">
                   <div>
-                    <span className="text-xs uppercase tracking-wider text-slate-text font-medium">One-Time Price</span>
+                    <span className="text-[11px] uppercase tracking-wider text-slate-text font-semibold">One-Time Price</span>
                     <div className="flex items-baseline gap-2">
-                      <span className="font-heading text-2xl sm:text-3xl font-bold text-green-brand">&#8358;22,500</span>
-                      <span className="text-xs text-slate-text line-through">&#8358;35,000</span>
+                      <span className="font-heading text-2xl sm:text-3xl font-extrabold text-green-brand">&#8358;22,500</span>
+                      <span className="text-xs text-slate-text font-medium line-through">&#8358;35,000</span>
                     </div>
                   </div>
-                  <span className="bg-green-brand/10 border border-green-brand/30 text-green-brand text-xs font-bold px-3 py-1.5 rounded-full">
+                  <span className="border-l-2 border-green-brand pl-2.5 py-0.5 text-xs font-bold text-green-brand tracking-wider uppercase">
                     Save 35% Today
                   </span>
                 </div>
